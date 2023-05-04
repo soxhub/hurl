@@ -45,6 +45,7 @@ if __name__ == "__main__":
                         const=1, default=[])
     parser.add_argument("-s", "--sitescsv", help="Nexus CSV File", required=True)
     parser.add_argument("-p", "--password", help="Admin Password", required=True)
+    parser.add_argument("-t", "--timeout", help="Seconds to timeout", type=int, default=100)
 
 
     args = parser.parse_args()
@@ -97,7 +98,7 @@ def main(args, limit=10):
                 logger.warning("Running against : {}".format(url))
 
                 cmd = cmd_tmpl.safe_substitute(url=url,
-                                               timeout=100,
+                                               timeout=args.timeout,
                                                token=token)
 
                 logger.info("Running Command: {}".format(cmd))
