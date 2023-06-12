@@ -45,6 +45,7 @@ if __name__ == "__main__":
                         const=1, default=[])
     parser.add_argument("-s", "--sitescsv", help="Nexus CSV File", required=True)
     parser.add_argument("-p", "--password", help="Admin Password", required=True)
+    parser.add_argument("-l", "--limit", help="Site Limit", default=10, type=int)
     parser.add_argument("-t", "--timeout", help="Seconds to timeout", type=int, default=100)
 
 
@@ -169,4 +170,4 @@ def get_token(site=None, admin_user=ADMIN_USER, admin_pass=None):
 
 if __name__ == "__main__":
 
-    main(args)
+    main(args, limit=args.limit)
